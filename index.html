@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2112a8">
+<meta name="description" content="Kamus Inggris Indonesia dan Indonesia Inggris SMAN 09 Bombana.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<title>Kamus Lengkap Bahasa Inggris SMAN 09 BOMBANA</title>
+<style>
+:root{--blue:#2414ad;--blue2:#3728d4;--gold:#ffdf18;--ink:#17172b;--muted:#72728a;--paper:#f5f6fc;--line:#e7e8f1}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:linear-gradient(145deg,#2112a8,#4436dc);color:white;padding:22px 18px 26px;border-radius:0 0 28px 28px;box-shadow:0 8px 25px #2112a833}
+.brand{display:flex;align-items:center;gap:13px;max-width:720px;margin:auto}.brand img{width:66px;height:66px;object-fit:contain;background:white;border-radius:50%;padding:3px}
+h1{font-size:17px;line-height:1.25;margin:0;font-weight:850;letter-spacing:.2px}.sub{font-size:11px;opacity:.85;margin-top:5px;letter-spacing:1px}
+main{max-width:720px;margin:18px auto;padding:0 14px 32px}.panel{background:white;border:1px solid var(--line);border-radius:20px;padding:17px;box-shadow:0 5px 18px #17172b08}
+.tabs{display:flex;background:#eeeff9;padding:4px;border-radius:13px;gap:4px}.tabs button{flex:1;border:0;background:transparent;border-radius:10px;padding:11px 6px;font-weight:750;color:#66657c;font-size:13px}.tabs button.active{background:var(--blue);color:white;box-shadow:0 3px 9px #2414ad40}
+.direction{display:flex;align-items:center;justify-content:center;gap:10px;margin:16px 0 12px;color:#4d4b68;font-size:13px;font-weight:700}.swap{border:1px solid #dfe0ed;background:#f6f6ff;color:var(--blue);border-radius:50%;width:36px;height:36px;font-size:19px}
+label{display:block;font-size:12px;font-weight:750;margin:10px 0 7px;color:#55546d}textarea{width:100%;min-height:112px;resize:vertical;border:1.5px solid #dedfee;border-radius:14px;padding:13px;font:16px/1.5 inherit;outline:none;color:var(--ink)}textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2414ad15}
+.actions{display:flex;gap:9px;margin-top:12px}.primary{flex:1;border:0;border-radius:13px;background:var(--blue);color:white;padding:14px;font-weight:800;font-size:15px}.secondary{border:1px solid var(--line);background:white;border-radius:13px;padding:0 15px;color:var(--blue);font-weight:750}
+.status{font-size:12px;color:var(--muted);min-height:18px;margin:10px 2px 0}.result{margin-top:15px;background:#f7f7ff;border:1px solid #e6e5ff;border-radius:15px;padding:14px;display:none}.result.show{display:block}.result-head{display:flex;justify-content:space-between;align-items:center;color:var(--blue);font-size:12px;font-weight:800}.result p{white-space:pre-wrap;overflow-wrap:anywhere;font-size:18px;line-height:1.5;margin:12px 0 8px}.result-tools{display:flex;gap:8px}.mini{border:1px solid #deddf8;background:white;border-radius:9px;padding:8px 11px;color:#3022b5;font-size:12px;font-weight:700}
+.section-title{font-size:15px;font-weight:850;margin:22px 3px 10px}.list{display:grid;gap:8px}.item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:white;border:1px solid var(--line);border-radius:13px;padding:11px 12px}.item-main{min-width:0}.item-word{font-weight:750;overflow-wrap:anywhere}.item-sub{font-size:11px;color:var(--muted);margin-top:3px}.item button{border:0;background:#f0efff;color:var(--blue);border-radius:9px;padding:8px 10px;font-weight:750}
+.empty{font-size:13px;color:var(--muted);padding:14px;background:white;border-radius:12px;text-align:center}.footer{text-align:center;color:#88879c;font-size:11px;line-height:1.6;margin:22px 10px}.footer strong{color:var(--blue)}
+@media(min-width:600px){header{padding:26px 24px 30px}h1{font-size:20px}.brand img{width:76px;height:76px}main{padding-top:24px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><img src="icons/icon-192.png" alt="Logo SMAN 09 Bombana"><div><h1>KAMUS LENGKAP<br>BAHASA INGGRIS<br>SMAN 09 BOMBANA</h1><div class="sub">ENGLISH ⇄ INDONESIA DICTIONARY</div></div></div></header>
+<main>
+<section class="panel">
+ <div class="tabs"><button id="enid" class="active">Inggris → Indonesia</button><button id="iden">Indonesia → Inggris</button></div>
+ <div class="direction"><span id="from">English</span><button class="swap" id="swap" aria-label="Tukar bahasa">⇄</button><span id="to">Indonesia</span></div>
+ <label for="query">Masukkan kata atau kalimat</label>
+ <textarea id="query" placeholder="Contoh: good morning, beautiful, atau saya suka belajar..." spellcheck="false"></textarea>
+ <div class="actions"><button class="primary" id="translate">Terjemahkan</button><button class="secondary" id="clear">Hapus</button></div>
+ <div class="status" id="status" aria-live="polite">Terjemahan memerlukan koneksi internet.</div>
+ <div class="result" id="result"><div class="result-head"><span>HASIL TERJEMAHAN</span><span id="pair">EN → ID</span></div><p id="answer"></p><div class="result-tools"><button class="mini" id="copy">Salin</button><button class="mini" id="speak">🔊 Dengarkan</button><button class="mini" id="favorite">☆ Simpan</button></div></div>
+</section>
+<div class="section-title">★ Kata tersimpan</div><div class="list" id="favorites"></div>
+<div class="section-title">Riwayat pencarian</div><div class="list" id="history"></div>
+<div class="footer">Dibuat untuk tugas sekolah<br><strong>SMAN 09 BOMBANA</strong><br>Gunakan dengan bijak untuk mendukung kegiatan belajar.</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+let direction='en|id', lastQuery='', lastAnswer='';
+const read=(k)=>{try{return JSON.parse(localStorage.getItem(k)||'[]')}catch{return []}};
+const write=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+function setDirection(d){direction=d;$('enid').classList.toggle('active',d==='en|id');$('iden').classList.toggle('active',d==='id|en');$('from').textContent=d==='en|id'?'English':'Indonesia';$('to').textContent=d==='en|id'?'Indonesia':'English';$('pair').textContent=d==='en|id'?'EN → ID':'ID → EN'}
+$('enid').onclick=()=>setDirection('en|id');$('iden').onclick=()=>setDirection('id|en');$('swap').onclick=()=>setDirection(direction==='en|id'?'id|en':'en|id');
+$('clear').onclick=()=>{$('query').value='';$('result').classList.remove('show');$('status').textContent='Kolom pencarian telah dibersihkan.';$('query').focus()};
+function showList(id,key){const data=read(key);const el=$(id);el.innerHTML='';if(!data.length){el.innerHTML='<div class="empty">Belum ada data.</div>';return}
+data.slice(0,12).forEach((x,i)=>{const row=document.createElement('div');row.className='item';const main=document.createElement('div');main.className='item-main';const word=document.createElement('div');word.className='item-word';word.textContent=x.q;const sub=document.createElement('div');sub.className='item-sub';sub.textContent=x.a;main.append(word,sub);const btn=document.createElement('button');btn.textContent='Gunakan';btn.onclick=()=>{$('query').value=x.q;setDirection(x.d);$('translate').click()};row.append(main,btn);el.append(row)})}
+function refresh(){showList('favorites','kamus_fav');showList('history','kamus_hist')}
+async function translate(){const q=$('query').value.trim();if(!q){$('status').textContent='Masukkan kata atau kalimat terlebih dahulu.';return}
+$('translate').disabled=true;$('translate').textContent='Memproses...';$('status').textContent='Sedang mencari terjemahan...';$('result').classList.remove('show');
+try{const url='https://api.mymemory.translated.net/get?q='+encodeURIComponent(q)+'&langpair='+direction;const res=await fetch(url);if(!res.ok)throw Error('Layanan terjemahan tidak merespons.');const data=await res.json();const answer=data?.responseData?.translatedText;if(!answer)throw Error('Terjemahan tidak ditemukan.');lastQuery=q;lastAnswer=answer;$('answer').textContent=answer;$('result').classList.add('show');$('status').textContent='Terjemahan berhasil. Periksa kembali konteks kalimat bila diperlukan.';let hist=read('kamus_hist').filter(x=>!(x.q===q&&x.d===direction));hist.unshift({q,a:answer,d:direction});write('kamus_hist',hist.slice(0,20));refresh()
+}catch(e){$('status').textContent='Tidak dapat menerjemahkan. Periksa koneksi internet lalu coba lagi.'}
+finally{$('translate').disabled=false;$('translate').textContent='Terjemahkan'}}
+$('translate').onclick=translate;
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(lastAnswer);$('status').textContent='Hasil berhasil disalin.'}catch{$('status').textContent='Fitur salin tidak tersedia pada browser ini.'}};
+$('speak').onclick=()=>{if(!lastAnswer)return;const u=new SpeechSynthesisUtterance(lastAnswer);u.lang=direction==='en|id'?'id-ID':'en-US';speechSynthesis.speak(u)};
+$('favorite').onclick=()=>{let f=read('kamus_fav');if(!f.some(x=>x.q===lastQuery&&x.d===direction)){f.unshift({q:lastQuery,a:lastAnswer,d:direction});write('kamus_fav',f.slice(0,30));$('status').textContent='Ditambahkan ke kata tersimpan.'}else $('status').textContent='Kata ini sudah tersimpan.';refresh()};
+$('query').addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter')translate()});
+refresh();
+if('serviceWorker' in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+</script>
+</body></html>
